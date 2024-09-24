@@ -14,6 +14,6 @@ now = datetime.now()
 target_date = datetime(2024, 9, 27)
 difference = target_date - now
 hours = difference.total_seconds() / 3600
-message = f"All Hail the Tiger. {hours:.0f} Hours to go #Devara "
+message = f"All Hail the Tiger. {hours:.0f} Hours to go. #Devara "
 cd = dumps(message)
 response = client.create_tweet(text=cd)
