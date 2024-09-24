@@ -1,7 +1,6 @@
 import tweepy
 import os
-from datetime import date
-from datetime import timedelta
+from datetime import  date, datetime, timedelta
 from json import dumps
 consumer_key = os.environ['TWITTER_API_KEY']
 consumer_secret = os.environ['TWITTER_API_SECRET_KEY']
@@ -11,6 +10,10 @@ client = tweepy.Client(consumer_key=consumer_key,
                     consumer_secret=consumer_secret,
                     access_token=access_token,
                     access_token_secret=access_token_secret)
-days = date(2024,9,27) - date.today() - timedelta(days = 1)
-cd = dumps(days.days, default=str)
+now = datetime.now()
+target_date = datetime(2024, 9, 27)
+difference = target_date - now
+hours = difference.total_seconds() / 3600
+message = f"All Hail the Tiger \n {hours:.0f} Hours to go \n #Devara"
+cd = dumps(message)
 response = client.create_tweet(text=cd)
